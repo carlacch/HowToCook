@@ -57,6 +57,7 @@
         app:menu="@menu/navigationbar"
         android:background="@color/colorPrimary"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white" />
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
