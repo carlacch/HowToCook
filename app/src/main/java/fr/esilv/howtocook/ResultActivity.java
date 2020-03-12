@@ -26,7 +26,6 @@ public class ResultActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +51,8 @@ public class ResultActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     RecipeSearchResponse recipes = response.body();
                     List<RecipeSearchResult> items = recipes.getResults();
-                    recyclerView.setAdapter(new RecipeSearchResultAdapter(items));
+                    String baseURL = recipes.getBaseUri();
+                    recyclerView.setAdapter(new RecipeSearchResultAdapter(items,baseURL,getBaseContext()));
                 }
             }
 
