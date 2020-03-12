@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <fragment
+        android:name="fr.esilv.howtocook.MenuFragment"
+        android:id="@+id/fooFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--
+    <FrameLayout
+        android:id="@+id/Main_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
     <TextView
         android:id="@+id/main_activity_app_name"
         android:text="HOW TO COOK"
@@ -21,7 +34,7 @@
         android:id="@+id/main_activity_greeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Qu'allez vous manger aujourd'hui ?"
+        android:text="What are we eating today ?"
         android:textSize="100px"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -48,6 +61,7 @@
         android:layout_marginTop="40dp"
         android:text="Search"
         android:textSize="20dp"/>
+    -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:layout_constraintBottom_toBottomOf="parent"
