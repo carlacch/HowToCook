@@ -3,25 +3,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/home"
-        android:title="Home"
+        android:title="@string/icon_home"
         android:icon="@drawable/home_icon"
         app:showAsAction="always">
     </item>
 
-    <item android:id="@+id/appetizers"
-        android:title="Starter"
+    <item android:id="@+id/starter"
+        android:title="@string/icon_starter"
         android:icon="@drawable/ic_salad3"
         app:showAsAction="always|withText">
     </item>
 
     <item android:id="@+id/main_courses"
         android:icon="@drawable/ic_breakfast"
-        android:title="Main"
+        android:title="@string/icon_maindish"
         app:showAsAction="always|withText">
     </item>
 
     <item android:id="@+id/desserts"
-        android:title="Dessert"
+        android:title="@string/icon_dessert"
         android:icon="@drawable/ic_bakery"
         app:showAsAction="always|withText">
     </item>

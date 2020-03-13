@@ -2,4 +2,8 @@
     <string name="app_name">HowToCook</string>
     <string name="search">Search a recipe</string>
     <string name="min"> min</string>
+    <string name="icon_home">Home</string>
+    <string name="icon_starter">Starter</string>
+    <string name="icon_maindish">Main</string>
+    <string name="icon_dessert">Dessert</string>
 </resources>
