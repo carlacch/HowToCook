@@ -13,12 +13,12 @@ import java.util.List;
 public class RecipeSearchResultAdapter extends RecyclerView.Adapter<RecipeResultViewHolder>  {
 
     private final List<RecipeSearchResult> items;
-    private final String baseURL;
+    private final String baseURI;
     private Context context;
 
-    public RecipeSearchResultAdapter(List<RecipeSearchResult> items, String baseURL, Context context) {
+    public RecipeSearchResultAdapter(List<RecipeSearchResult> items, String baseURI, Context context) {
         this.items = items;
-        this.baseURL = baseURL;
+        this.baseURI = baseURI;
         this.context = context;
     }
 
@@ -31,7 +31,7 @@ public class RecipeSearchResultAdapter extends RecyclerView.Adapter<RecipeResult
 
     @Override
     public void onBindViewHolder(@NonNull RecipeResultViewHolder holder, int position) {
-        holder.bind(items.get(position),baseURL,context);
+        holder.bind(items.get(position),baseURI,context);
     }
 
     @Override

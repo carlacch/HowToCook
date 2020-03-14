@@ -1,5 +1,7 @@
 package fr.esilv.howtocook;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 public class RecipeSearchResponse {
@@ -7,9 +9,10 @@ public class RecipeSearchResponse {
     private String baseUri;
     private int totalResults;
 
-    public List<RecipeSearchResult> getResults() { return results; }
+    @NonNull
+    List<RecipeSearchResult> getResults() { return results; }
 
-    public String getBaseUri() { return baseUri; }
+    String getBaseUri() { return baseUri; }
 
     public int getTotalResults() { return totalResults; }
 }
