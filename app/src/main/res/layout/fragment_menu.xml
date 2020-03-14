@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MenuFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,14 +19,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="100dp"
-            android:textSize="70px"/>
+            android:textSize="25sp"/>
 
         <TextView
             android:id="@+id/main_activity_greeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="What are we eating today ?"
-            android:textSize="100px"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:textAlignment="center"
             app:layout_constraintLeft_toLeftOf="parent"
