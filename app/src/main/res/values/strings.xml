@@ -6,4 +6,10 @@
     <string name="icon_starter">Starter</string>
     <string name="icon_maindish">Main</string>
     <string name="icon_dessert">Dessert</string>
+
+
+    <string name="starter_fragment">STARTERS !</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

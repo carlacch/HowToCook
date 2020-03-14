@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     //private EditText searchBar;
     //private Button searchBtn;
     Fragment frag_menu = new MenuFragment();
+    Fragment frag_starter = new StarterFragment();
 
     private BottomNavigationView bottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener itemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(frag_menu);
                     break;
                 case R.id.starter :
+                    showFragment(frag_starter);
                     break;
                 case R.id.main_courses :
                     break;
