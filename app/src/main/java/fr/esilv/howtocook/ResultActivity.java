@@ -21,9 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private static final String API_KEY = "16f956ed446f4c2badf858240d0ba832";
-    private SpoonacularService service;
     private RecyclerView recyclerView;
+    private String BaseURL;
 
 
     @Override
@@ -31,6 +30,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        BaseURL = "https://api.spoonacular.com/recipes/";
         recyclerView = findViewById(R.id.result_activity_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -38,27 +38,35 @@ public class ResultActivity extends AppCompatActivity {
         String query = intent.getStringExtra("QUERY");
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.spoonacular.com/recipes/")
+                .baseUrl(BaseURL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        service = retrofit.create(SpoonacularService.class);
+        LaunchService launch = new LaunchService(retrofit, recyclerView, getBaseContext());
+        launch.launchService(query);
+    }
 
-
+    /*
+    private void launchService(String query){
         service.search(query, API_KEY).enqueue(new Callback<RecipeSearchResponse>() {
             @Override
             public void onResponse(@NonNull Call<RecipeSearchResponse> call, @NonNull Response<RecipeSearchResponse> response) {
                 if (response.isSuccessful()) {
                     RecipeSearchResponse recipes = response.body();
-                    List<RecipeSearchResult> items = recipes.getResults();
-                    String baseURL = recipes.getBaseUri();
+                    List<RecipeSearchResult> items = null;
+                    String baseURL = null;
+                    if (recipes != null) {
+                        items = recipes.getResults();
+                        baseURL = recipes.getBaseUri();
+                    }
                     recyclerView.setAdapter(new RecipeSearchResultAdapter(items,baseURL,getBaseContext()));
                 }
             }
 
             @Override
-            public void onFailure(Call<RecipeSearchResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<RecipeSearchResponse> call, @NonNull Throwable t) {
             }
         });
-    }
+    }*/
+
 }
