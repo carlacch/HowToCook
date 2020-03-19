@@ -10,15 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class GridRecipeSearchResultAdpater extends RecyclerView.Adapter<GridRecipeViewHolder>  {
+public class GridRecipeSearchResultAdapter extends RecyclerView.Adapter<GridRecipeViewHolder>  {
     private final List<RecipeSearchResult> items;
-    private final String baseURI;
-    private Context context;
 
-    public GridRecipeSearchResultAdpater(List<RecipeSearchResult> items, String baseURI, Context context) {
+    public GridRecipeSearchResultAdapter(List<RecipeSearchResult> items) {
         this.items = items;
-        this.baseURI = baseURI;
-        this.context = context;
     }
 
     @NonNull
@@ -30,7 +26,7 @@ public class GridRecipeSearchResultAdpater extends RecyclerView.Adapter<GridReci
 
     @Override
     public void onBindViewHolder(@NonNull GridRecipeViewHolder holder, int position) {
-        holder.bind(items.get(position),baseURI,context);
+        holder.bind(items.get(position));
     }
 
     @Override

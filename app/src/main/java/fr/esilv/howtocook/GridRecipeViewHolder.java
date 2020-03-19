@@ -1,6 +1,5 @@
 package fr.esilv.howtocook;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,8 +20,8 @@ public class GridRecipeViewHolder extends RecyclerView.ViewHolder {
         this.imageView = itemView.findViewById(R.id.recipe_image);
     }
 
-    public void bind(final RecipeSearchResult recipeSearchResult, String baseURL, Context context) {
+    public void bind(final RecipeSearchResult recipeSearchResult) {
         title.setText(recipeSearchResult.getTitle());
-        Picasso.get().load(baseURL + recipeSearchResult.getImage()).resize(180, 180).centerCrop().into(imageView);
+        Picasso.get().load(recipeSearchResult.getImage()).resize(180, 180).centerCrop().into(imageView);
     }
 }

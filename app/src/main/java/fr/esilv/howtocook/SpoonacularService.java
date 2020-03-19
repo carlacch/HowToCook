@@ -11,7 +11,7 @@ public interface SpoonacularService {
     @GET("search?number=100")
     Call<RecipeSearchResponse> search(@Query("query") String query, @Query("apiKey") String apiKey);
 
-    @GET("complexSearch?")
+    @GET("complexSearch?number=50")
     Call<RecipeSearchResponse> complexSearch(@Query("type") String query, @Query("apiKey") String apiKey);
 
     @GET("{id}/information")
