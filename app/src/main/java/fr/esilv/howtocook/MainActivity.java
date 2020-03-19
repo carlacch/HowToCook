@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     //private Button searchBtn;
     Fragment frag_menu = new MenuFragment();
     Fragment frag_starter = new StarterFragment();
+    Fragment frag_main = new MainFragment();
 
     private BottomNavigationView bottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener itemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(frag_starter);
                     break;
                 case R.id.main_courses :
+                    showFragment(frag_main);
                     break;
                 case R.id.desserts :
                     break;
