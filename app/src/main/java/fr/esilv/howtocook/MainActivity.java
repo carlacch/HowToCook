@@ -1,6 +1,7 @@
 package fr.esilv.howtocook;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private EditText searchBar;
     //private Button searchBtn;
+    private ActionBar actionBar;
     Fragment frag_menu = new MenuFragment();
     Fragment frag_starter = new StarterFragment();
     Fragment frag_main = new MainFragment();
@@ -25,15 +27,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()){
                 case R.id.home :
+                    actionBar.setTitle("HOME");
                     showFragment(frag_menu);
                     break;
                 case R.id.starter :
+                    actionBar.setTitle("STARTERS");
                     showFragment(frag_starter);
                     break;
                 case R.id.main_courses :
                     showFragment(frag_main);
+                    actionBar.setTitle("MAIN COURSES");
                     break;
                 case R.id.desserts :
+                    actionBar.setTitle("DESSERTS");
                     break;
             }
             return false;
@@ -45,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        actionBar = getSupportActionBar();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         showFragment(new MenuFragment());
+        actionBar.setTitle("HOME");
         bottomNavigationView.setOnNavigationItemSelectedListener(itemSelectedListener);
 
         /*
