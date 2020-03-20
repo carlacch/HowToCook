@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
     //private Button searchBtn;
     private ActionBar actionBar;
     Fragment frag_menu = new MenuFragment();
-    Fragment frag_starter = new StarterFragment();
-    Fragment frag_main = new MainFragment();
+    Fragment frag_starter = new GridRecipesFragment("appetizer");
+    Fragment frag_main = new GridRecipesFragment("main course");
+    Fragment frag_dessert = new GridRecipesFragment("dessert");
 
     private BottomNavigationView bottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener itemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.desserts :
                     actionBar.setTitle("DESSERTS");
+                    showFragment(frag_dessert);
                     break;
             }
             return false;

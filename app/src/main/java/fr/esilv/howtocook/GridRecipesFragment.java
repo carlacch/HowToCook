@@ -18,17 +18,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainFragment extends Fragment {
+public class GridRecipesFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private final String BaseURL = "https://api.spoonacular.com/recipes/";
     private View view;
-    private String query;
     private SpoonacularService service;
+    private String type; // the type is appetizer, main course, or
 
 
-    public MainFragment() {
-        // Required empty public constructor
+    public GridRecipesFragment(String type) {
+        this.type = type;
     }
 
 
@@ -36,8 +36,8 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_main, container, false);
-        recyclerView = view.findViewById(R.id.main_dishes_recycler_view);
+        view = inflater.inflate(R.layout.fragment_grid_recipes, container, false);
+        recyclerView = view.findViewById(R.id.grid_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2));
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BaseURL)
@@ -45,7 +45,7 @@ public class MainFragment extends Fragment {
                 .build();
         service = retrofit.create(SpoonacularService.class);
 
-        service.complexSearch("main course", Constants.API_KEY).enqueue(new Callback<RecipeSearchResponse>() {
+        service.complexSearch(this.type, Constants.API_KEY).enqueue(new Callback<RecipeSearchResponse>() {
             @Override
             public void onResponse(@NonNull Call<RecipeSearchResponse> call, @NonNull Response<RecipeSearchResponse> response) {
                 if (response.isSuccessful()) {
