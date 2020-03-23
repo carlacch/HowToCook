@@ -2,6 +2,9 @@ package fr.esilv.howtocook;
 
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
+import fr.esilv.howtocook.Model.RecipeInformation;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -15,5 +18,10 @@ public interface SpoonacularService {
     Call<RecipeSearchResponse> complexSearch(@Query("type") String query, @Query("apiKey") String apiKey);
 
     @GET("{id}/information")
-    Call<RecipeSearchResult> getRecipe(@Path("id") String id_recipe, @Query("apiKey") String apiKey);
+    Call<RecipeInformation> getRecipe(@Path("id") String id_recipe, @Query("apiKey") String apiKey);
+
+
+    @GET("{id}/analyzedInstructions")
+    Call<List<InstructionsResponse>> getInstructions(@Path("id") String id_recipe, @Query("apiKey") String apiKey);
+
 }
