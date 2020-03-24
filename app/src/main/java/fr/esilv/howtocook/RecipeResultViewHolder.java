@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 public class RecipeResultViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private TextView title;
@@ -29,7 +31,8 @@ public class RecipeResultViewHolder extends RecyclerView.ViewHolder implements V
     public void bind(final RecipeSearchResult recipeSearchResult, String baseURI, Context context) {
         recipeID=recipeSearchResult.getId();
         title.setText(recipeSearchResult.getTitle());
-        Picasso.get().load(baseURI+recipeSearchResult.getImage()).resize(180,180).centerCrop().into(imageView);
+        List<String> listIm = recipeSearchResult.getImageUrls();
+        Picasso.get().load(baseURI+listIm.get(listIm.size()-1)).resize(180,180).centerCrop().into(imageView);
         String time = recipeSearchResult.getReadyInMinutes()+ context.getResources().getString(R.string.min);
         time_prep.setText(time);
     }

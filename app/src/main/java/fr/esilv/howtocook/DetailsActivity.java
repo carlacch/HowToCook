@@ -28,9 +28,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static fr.esilv.howtocook.Constants.BASE_URI;
+
 public class DetailsActivity extends AppCompatActivity {
     String recipeID;
-    String BaseURI;
     TextView title;
     ImageView image;
     RecyclerView ingredientsRecycler;
@@ -57,7 +58,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent= getIntent();
         recipeID = intent.getExtras().getString("RECIPE_ID");
-        BaseURI = intent.getExtras().getString("BASE_URI");
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BaseURL)
@@ -103,7 +103,7 @@ public class DetailsActivity extends AppCompatActivity {
             public void onResponse(Call<List<RecipeSearchResult>> call, Response<List<RecipeSearchResult>> response) {
                 if (response.isSuccessful()) {
                     List<RecipeSearchResult> recipes = response.body();
-                    similarRecycler.setAdapter(new RecipeSearchResultAdapter(recipes,BaseURI,getBaseContext()));
+                    similarRecycler.setAdapter(new RecipeSearchResultAdapter(recipes,BASE_URI,getBaseContext()));
                 }
             }
 
