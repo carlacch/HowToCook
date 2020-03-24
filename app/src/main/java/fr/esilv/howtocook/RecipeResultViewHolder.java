@@ -26,10 +26,10 @@ public class RecipeResultViewHolder extends RecyclerView.ViewHolder implements V
         itemView.setOnClickListener(this);
     }
 
-    public void bind(final RecipeSearchResult recipeSearchResult, String baseURL, Context context) {
+    public void bind(final RecipeSearchResult recipeSearchResult, String baseURI, Context context) {
         recipeID=recipeSearchResult.getId();
         title.setText(recipeSearchResult.getTitle());
-        Picasso.get().load(baseURL+recipeSearchResult.getImage()).resize(180,180).centerCrop().into(imageView);
+        Picasso.get().load(baseURI+recipeSearchResult.getImage()).resize(180,180).centerCrop().into(imageView);
         String time = recipeSearchResult.getReadyInMinutes()+ context.getResources().getString(R.string.min);
         time_prep.setText(time);
     }

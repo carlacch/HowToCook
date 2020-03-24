@@ -20,8 +20,10 @@ public interface SpoonacularService {
     @GET("{id}/information")
     Call<RecipeInformation> getRecipe(@Path("id") String id_recipe, @Query("apiKey") String apiKey);
 
-
     @GET("{id}/analyzedInstructions")
     Call<List<InstructionsResponse>> getInstructions(@Path("id") String id_recipe, @Query("apiKey") String apiKey);
+
+    @GET("{id}/similar?number=5")
+    Call<List<RecipeSearchResult>> getSimilar(@Path("id") String id_recipe, @Query("apiKey") String apiKey);
 
 }
