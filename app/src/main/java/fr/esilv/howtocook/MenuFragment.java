@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -23,7 +24,7 @@ public class MenuFragment extends Fragment {
     ResultFragment resultFragment = new ResultFragment();
     FragmentTransaction transaction;
     SharedPreferences sharedPreferences;
-
+    TextView preview_query;
 
     public MenuFragment() {
     }
@@ -32,9 +33,16 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_menu, container, false);
         searchView = view.findViewById(R.id.search_bar_view);
-
+        preview_query = view.findViewById(R.id.preview_query_text);
         sharedPreferences = getContext().getSharedPreferences(Constants.PREF_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        String prevquery = sharedPreferences.getString("query",null);
+        if ( prevquery!= null){
+            preview_query.setText(R.string.prevquery);
+            preview_query.append(" ");
+            preview_query.append(prevquery);
+        }
 
         transaction = getFragmentManager().beginTransaction();
 
@@ -46,7 +54,7 @@ public class MenuFragment extends Fragment {
                 intent.putExtra("QUERY", query);
                 startActivity(intent);
                  */
-                editor.putString("query1",query);
+                editor.putString("query",query);
                 editor.apply();
                 Bundle bundle = new Bundle();
                 bundle.putString("query", query);
