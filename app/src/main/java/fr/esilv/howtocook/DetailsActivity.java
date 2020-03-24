@@ -33,6 +33,7 @@ import static fr.esilv.howtocook.Constants.BASE_URI;
 public class DetailsActivity extends AppCompatActivity {
     String recipeID;
     TextView title;
+    TextView noSimilarText;
     ImageView image;
     RecyclerView ingredientsRecycler;
     RecyclerView instructionsRecycler;
@@ -51,6 +52,7 @@ public class DetailsActivity extends AppCompatActivity {
         ingredientsRecycler = findViewById(R.id.ingredients_recycler_view);
         instructionsRecycler = findViewById(R.id.instructions_recycler_view);
         similarRecycler = findViewById(R.id.similar_recycler_view);
+        noSimilarText = findViewById(R.id.no_similar_text);
 
         ingredientsRecycler.setLayoutManager(new LinearLayoutManager(this));
         instructionsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -104,6 +106,9 @@ public class DetailsActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<RecipeSearchResult> recipes = response.body();
                     similarRecycler.setAdapter(new RecipeSearchResultAdapter(recipes,BASE_URI,getBaseContext()));
+                    if (recipes.size() == 0){
+                        noSimilarText.setText(R.string.nosimilar);
+                    }
                 }
             }
 

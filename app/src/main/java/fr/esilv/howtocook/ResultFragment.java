@@ -2,7 +2,6 @@ package fr.esilv.howtocook;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,6 +29,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class ResultFragment extends Fragment {
 
+    private TextView no_result;
     private String query;
     private View view;
     private RecyclerView recyclerView;
@@ -44,6 +45,7 @@ public class ResultFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_result, container, false);
         recyclerView = view.findViewById(R.id.result_activity_recycler_view);
+        no_result = view.findViewById(R.id.no_result_text);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -53,7 +55,7 @@ public class ResultFragment extends Fragment {
 
         setQuery();
 
-        LaunchService launch = new LaunchService(retrofit, recyclerView, this.getContext());
+        LaunchService launch = new LaunchService(retrofit, no_result, recyclerView, this.getContext());
         launch.launchService(query);
         return view ;
     }
@@ -70,38 +72,4 @@ public class ResultFragment extends Fragment {
         }
     }
 
-    /*
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
-     */
 }
