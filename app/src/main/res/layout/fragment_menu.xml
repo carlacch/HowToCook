@@ -45,7 +45,7 @@
             android:iconifiedByDefault="false"/>
 
         <TextView
-            android:id="@+id/preview_query_text"
+            android:id="@+id/previous_query_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

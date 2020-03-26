@@ -12,5 +12,5 @@
 
     <string name="nosimilar">Sorry we found no recipe similar</string>
     <string name="noresult">Sorry, there is no recipe for what you asked</string>
-    <string name="prevquery">Your previews query was :  </string>
+    <string name="prevquery">Your previous query was :  </string>
 </resources>
